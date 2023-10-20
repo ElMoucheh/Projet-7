@@ -4,17 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/style.css">
-    <title>Les petits plats</title>
+    <script src="https://kit.fontawesome.com/2f567fdf59.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <img src="assets/logo/lpp_logo.png" alt="Logo les petits plats">
+        <div class="">
+            <p>CHERCHEZ PARMI PLUS DE 1500 RECETTES<br>DU QUOTIDIEN,SIMPLES ET DÉLICIEUSES</p>
+            <form class="form_search" action="">
+                <input type="text" placeholder="Rechercher une recette, un ingrédient, ...">
+                <button><i class="fa-solid fa-magnifying-glass" style="color: white; font-size: 25px;"></i></button>
+            </form>
+        </div>
     </header>
     <main>
-
+        <section class="filter_counter">
+            <div id="filter"></div>
+            <span id="counter"></span>
+        </section>
+        <section id="optionsSelected">
+        </section>
+        <section id="list_cards"></section>
     </main>
-    <footer>
-
-    </footer>
+    <script type="module" src="js/index.js"></script>
 </body>
 </html>
