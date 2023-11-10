@@ -31,7 +31,7 @@ export function optionSelected(key, elementId, eventClickFilter, removeFilterInA
 
         let p = lineOption(element);
         p.addEventListener("click", () => {
-            eventClickFilter(key, element.name);
+            eventClickFilter(key, elementId);
         });
 
         listOptions.appendChild(p);

@@ -36,6 +36,7 @@ export function filter(name, key){
     const input = document.createElement("input");
     input.setAttribute("type", "text");
     input.setAttribute("id", "input_" + key);
+    input.setAttribute("placeholder", "Rechercher " + name);
 
     const icon = document.createElement("i");
     icon.setAttribute("class", "fa-solid fa-magnifying-glass");
