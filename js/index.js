@@ -16,7 +16,7 @@ let filterSelected = {
     "ingredients" : new Set(),
     "appliance" : new Set(),
     "ustensils" : new Set(),
-};
+}; 
 
 function init() {
     const sect_filters = document.getElementById("filter");
@@ -51,62 +51,58 @@ function initGlobalSearch(){
 }
 
 function globalSearch(searchTerm) {
-
     const cards = Array.from(document.querySelectorAll(".card"));
 
-    cards.forEach(card => {
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
         const h2Element = card.querySelector(".card_main h2");
         const descriptionElement = card.querySelector(".card_main .steps p");
 
-       if (h2Element.textContent.toLowerCase().includes(searchTerm) || descriptionElement.textContent.toLowerCase().includes(searchTerm)) {
-            card.style.display = "block"; 
+        if (h2Element.textContent.toLowerCase().includes(searchTerm) || descriptionElement.textContent.toLowerCase().includes(searchTerm)) {
+            card.style.display = "block";
         } else {
-            card.style.display = "none"; 
+            card.style.display = "none";
         }
-
-    });
-
-    counterRecipe(recipesList);
-
+    }
 }
 
-function loadingRecipe(r) { // r is an array of objects
+function loadingRecipe(r) {
     const cards = document.getElementById("list_cards");
     cards.innerHTML = "";
 
-    r.forEach(e => {
-        cards.appendChild(recipeCard(e));                   // Display recipe cards
-    });
+    for (let i = 0; i < r.length; i++) {
+        cards.appendChild(recipeCard(r[i])); // Display recipe cards
+    }
 }
 
-function activeSearchFilter(key){
-
+function activeSearchFilter(key) {
     const searchInput = document.getElementById("input_" + key);
 
     searchInput.addEventListener("input", () => {
-
         let searchTerm = searchInput.value;
 
         const listOptions = document.getElementById("list_" + key);
         const options = Array.from(listOptions.children);
-        
+
         searchTerm = searchTerm.toLowerCase();
 
-        options.forEach(option => {
+        for (let i = 0; i < options.length; i++) {
+            const option = options[i];
             const optionText = option.textContent.toLowerCase();
             if (optionText.includes(searchTerm)) {
-                option.style.display = "block"; 
+                option.style.display = "block";
             } else {
-                option.style.display = "none"; 
+                option.style.display = "none";
             }
-        });
+        }
     });
 }
 
-function initEventFilter(){
+function initEventFilter() {
     const filters = document.querySelectorAll(".list_");
 
-    filters.forEach(filter => {
+    for (let i = 0; i < filters.length; i++) {
+        const filter = filters[i];
         const header = filter.querySelector(".header_list");
         const ext = filter.querySelector(".extension_filter");
 
@@ -124,20 +120,21 @@ function initEventFilter(){
                 downIcon.classList.add("disabled");
             }
         });
-    });
+    }
 }
 
-function loadingOptionsFilter(key, list) { // the key has 3 variants "ingredients | appliance | ustensils" corresponding to its list
+function loadingOptionsFilter(key, list) {
     const listOptions = document.getElementById("list_" + key);
 
-    list.forEach(option => { // browse the list of options
+    for (let i = 0; i < list.length; i++) {
+        const option = list[i];
         const line = lineOption(option, key);
-        listOptions.appendChild(line);          // Add line built in lineOption
-        
+        listOptions.appendChild(line);
+
         line.addEventListener("click", () => {
             eventClickFilter(key, line.id);
         });
-    });
+    }
 }
 
 function counterRecipe(list){
