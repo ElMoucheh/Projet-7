@@ -64,6 +64,8 @@ function globalSearch(searchTerm) {
             card.style.display = "none";
         }
     }
+
+    countDisplayedCards()
 }
 
 function loadingRecipe(r) {
@@ -134,6 +136,27 @@ function loadingOptionsFilter(key, list) {
         line.addEventListener("click", () => {
             eventClickFilter(key, line.id);
         });
+    }
+}
+
+function countDisplayedCards() {
+    const cards = document.querySelectorAll(".card");
+    const counter = document.getElementById("counter");
+
+    let count = 0;
+
+    for (let i = 0; i < cards.length; i++) {
+        const card = cards[i];
+        const style = card.style;
+        if (style.display !== 'none') {
+            count++;
+        }
+    }
+
+    if (count > 1) {
+        counter.innerHTML = count + " Recettes";
+    } else {
+        counter.innerHTML = count + " Recette";
     }
 }
 
