@@ -66,7 +66,7 @@ function globalSearch(searchTerm) {
 
     });
 
-    counterRecipe(recipesList);
+    countDisplayedCards();
 
 }
 
@@ -138,6 +138,26 @@ function loadingOptionsFilter(key, list) { // the key has 3 variants "ingredient
             eventClickFilter(key, line.id);
         });
     });
+}
+
+function countDisplayedCards() {
+    const cards = document.querySelectorAll(".card");
+    const counter = document.getElementById("counter");
+
+    let count = 0;
+
+    cards.forEach(card => {
+        const style = card.style;
+        if (style.display !== 'none') {
+            count++;
+        }
+    });
+
+    if(count > 1){
+        counter.innerHTML = count + " Recettes";
+    } else {
+        counter.innerHTML = count + " Recette";
+    }
 }
 
 function counterRecipe(list){
