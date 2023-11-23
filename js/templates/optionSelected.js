@@ -1,6 +1,6 @@
 import { lineOption } from "./lineOption.js";
 
-export function optionSelected(key, elementId, eventClickFilter, removeFilterInArray, researchRecipes){
+export function optionSelected(key, elementId, eventClickFilter, removeFilterInArray, processSearch){
 
     var splitPart = elementId.split("_"); // Divise la chaîne en utilisant le caractère "_"
     var name = splitPart[splitPart.length - 1];
@@ -26,10 +26,10 @@ export function optionSelected(key, elementId, eventClickFilter, removeFilterInA
         if (optionRemove) {
             optionRemove.parentNode.removeChild(optionRemove);
             removeFilterInArray(key, elementId);
-            researchRecipes();
+            processSearch();
         }
 
-        let p = lineOption(element);
+        let p = lineOption(element, key);
         p.addEventListener("click", () => {
             eventClickFilter(key, elementId);
         });

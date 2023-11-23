@@ -40,13 +40,19 @@ function init() {
     counterRecipe(recipes); // Count of Recipes displayed 
 }
 
+
+function processSearch(){
+    const searchTerm = document.getElementById("searchInputForm").value.toLowerCase();
+    researchRecipes();
+    globalSearch(searchTerm);
+}
+
 function initGlobalSearch(){
     const searchForm = document.getElementById("searchForm");
     searchForm.addEventListener("submit", function(event) {
         event.preventDefault();
 
-        const searchTerm = document.getElementById("searchInputForm").value.toLowerCase();
-        globalSearch(searchTerm);
+        processSearch();
     });
 }
 
@@ -179,8 +185,8 @@ function eventClickFilter(key, elementId){
     if (optionRemove) {
         optionRemove.parentNode.removeChild(optionRemove);
     }
-    researchRecipes();
-    optionsSelected.appendChild(optionSelected(key, elementId, eventClickFilter, removeFilterInArray, researchRecipes));
+    processSearch();
+    optionsSelected.appendChild(optionSelected(key, elementId, eventClickFilter, removeFilterInArray, processSearch));
 }
 
 function removeFilterInArray(key, elementId){
